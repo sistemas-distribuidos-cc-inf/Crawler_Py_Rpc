@@ -51,7 +51,8 @@ class LinkParser(HTMLParser):
 
 # And finally here is our spider. It takes in an URL, a word to find,
 # and the number of pages to search through before giving up
-def spider(url, word, maxPages):
+def spider(url, word):
+	maxPages = 50
 	pagesToVisit = [url]
 	numberVisited = 0
 	foundWord = False
@@ -61,7 +62,7 @@ def spider(url, word, maxPages):
     # (this is useful for searching for the word)
     # and we return a set of links from that web page
     # (this is useful for where to go next)
-	while numberVisited < maxPages and pagesToVisit != [] and not foundWord:
+	while numberVisited < maxPages and pagesToVisit != []:
 		numberVisited = numberVisited +1
         # Start from the beginning of our collection of pages to visit:
 		url = pagesToVisit[0]
